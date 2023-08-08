@@ -5,7 +5,7 @@ COPY main.go .
 RUN go get -v
 RUN CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' main.go
 
-FROM alpine
+FROM alpine:3.18.3
 RUN apk --no-cache add ca-certificates curl nmap libpcap-dev nmap-scripts bash
 WORKDIR /
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.11.0/bin/linux/amd64/kubectl && chmod +x kubectl
